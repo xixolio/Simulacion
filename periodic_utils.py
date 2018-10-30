@@ -211,7 +211,7 @@ def periodic_predict(n_simulations, horizon, data,periods,model,model_name,path,
     CWC = MPIW*(1+y*np.exp(-n*(PICP-u)))
     
     predictions = np.mean(predictions,axis=0)
-    mse_per_horizon = np.mean((predictions.reshape(-1,24) - true_outputs.reshape(-1,24))**2,axis=0)
+    mse_per_horizon = np.mean((predictions.reshape(-1,24) - true_outputs.values.reshape(-1,24))**2,axis=0)
     return predictions, mse_per_horizon, upper_bounds, lower_bounds, CWC_per_horizon, CWC
     
 def predict(n_simulations, horizon, data,model,model_name,path,true_outputs):
