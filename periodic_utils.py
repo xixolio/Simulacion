@@ -168,7 +168,7 @@ def periodic_predict(n_simulations, horizon, data,periods,model,model_name,path,
     current_input = data
     
     for j in range(n_simulations):
-        #print(j)
+        print(j)
         current_input = data
         for i in range(horizon):
                 #print("imprimiendo actual")

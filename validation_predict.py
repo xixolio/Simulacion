@@ -22,6 +22,8 @@ from data_processing import get_data
 from keras.utils import to_categorical
 import numpy as np
 from simulation_metrics import metrics_and_plots
+from keras import backend as K
+K.set_session(K.tf.Session(config=K.tf.ConfigProto(intra_op_‌​parallelism_threads=‌​8, inter_op_parallelism_threads=8)))
 
 states = [5,10,15,20,25]
 lags = [1, 12, 24]
