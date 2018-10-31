@@ -18,7 +18,7 @@ from data_processing import get_data
 
 
 
-input_train, input_test ,input_test, output_test , min_speeds, max_speeds = get_data('', 'no_mvs_b08.csv',ts=1, lag=1)
+input_train, input_test ,output_train, output_test , min_speeds, max_speeds = get_data('', 'no_mvs_b08.csv',ts=1, lag=1)
     
 input_test = input_test.flatten()
 
