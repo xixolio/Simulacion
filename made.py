@@ -35,7 +35,7 @@ time_steps = [30]
 epochs = [20,30]
 hiddens = [5,10]
 
-combinations = product(states, lags, time_steps,epochs)
+combinations = product(states, lags, time_steps,epochs,hiddens)
 parameters = [params for params in combinations]
 models = []
 data = []
