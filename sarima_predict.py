@@ -18,19 +18,17 @@ from data_processing import get_data
 
 
 
-input_train, input_test ,_ , output_test , min_speeds, max_speeds = get_data('', 'no_mvs_b08.csv',ts=1, lag=1)
+input_train, input_test ,input_test, output_test , min_speeds, max_speeds = get_data('', 'no_mvs_b08.csv',ts=1, lag=1)
     
-n_val = int(len(input_test)/2)
-val_input = input_test[:n_val].reshape(-1)
-val_output = output_test[:n_val]
+input_test = input_test.flatten()
 
-model2 = SARIMAX(val_input, order = (4,0,0), seasonal_order = (0,1,3,24))
+model2 = SARIMAX(input_test, order = (4,0,0), seasonal_order = (0,1,3,24))
 res = model2.filter(np.array([ 0.85145337, -0.19835504,  0.05774695,  0.02914752, -0.77779017, -0.08159543, -0.04684304,  0.00701107]))
 sarima_predictions = []
 sarima_upper_bound = []
 sarima_lower_bound = []
     
-for i in range(100,120):
+for i in range(100,len(input_test)):
     if i%100==0:
         print(i)
     prediction = res.get_prediction(start=i,end=i+23,dynamic=0)
